@@ -16,7 +16,13 @@ class App extends Component {
   }
   this.addThing = this.addThing.bind(this)
   this.remove = this.remove.bind(this)
-  }
+}
+
+  getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
   
   remove(ev) {
     ev.preventDefault()
@@ -31,8 +37,10 @@ class App extends Component {
     for (let i = 0; i < len; i++) {
       if (things[i].name === text) {
         delete things[i]
+        break
       }
     }
+    //this.setState({things}) Need to set an updated state
     console.log(things)
     //delete things[0]
     //console.log()
@@ -40,13 +48,18 @@ class App extends Component {
   }
 
   addThing(ev) {
-    const text = window.prompt("Enter a thing","thing");
+    const randomArr = ['ice cream', 'pie', 'lettuce', 'smores', 'peanut butter', 'shoes', 'trash']
+    // This gives a random default input
+    const text = window.prompt("Enter a thing",randomArr[this.getRandomIntInclusive(0,randomArr.length)]);
     ev.preventDefault()
     const things = {...this.state.things}
     // console.log(things)
     const id = this.count++;
-    things[id] = {id: id, name: text}
-    this.setState({things})
+    if (text !== "") {
+      things[id] = {id: id, name: text}
+      this.setState({things})
+    }
+    
   }
   render() {
     return (

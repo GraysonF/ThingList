@@ -8,7 +8,7 @@ const Thing = (props) => {
             {/*{thing.name}*/}
             <input type="checkbox" value="on" />
           <div className="details">
-            <div className="name" contentEditable="true">
+            <div className="name">
               {props.thing.name}
             </div>
             <span className="actions">
