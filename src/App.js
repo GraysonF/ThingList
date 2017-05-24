@@ -34,17 +34,14 @@ class App extends Component {
     const len = Object.keys(things).length
     parent.removeChild(child);
     console.log(things)
-    for (let i = 0; i < len; i++) {
-      if (things[i].name === text) {
-        delete things[i]
-        break
-      }
-    }
+    // for (let i = 0; i < len; i++) {
+    //   if (things[i].name === text) {
+    //     delete things[i]
+    //     break
+    //   }
+    // }
     //this.setState({things}) Need to set an updated state
     console.log(things)
-    //delete things[0]
-    //console.log()
-    //console.log(tg)
   }
 
   addThing(ev) {
